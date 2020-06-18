@@ -1,11 +1,12 @@
 from sys import argv
 from Piece import Piece
+from Tile import Tile
 
 
 class Board:
     def __init__(self):
         """Creates a new Board object."""
-        self.board = [[Piece('Null')]*8]*8
+        self.board = [[Tile(Piece('null'))]*8]*8
 
 
     def print_board(self):
@@ -13,8 +14,14 @@ class Board:
         for row in self.board: print(row)
 
     
-    def place(self, color : str, coordinates : tuple):
-        pass        
+    def place(self, color : str, x : int, y : int):
+        try:
+            self.board[x][y].place(Piece(color))
+        except ValueError:
+            print('Tile occupied')
+            return False
+        
+
 
 def test():
     board = Board()

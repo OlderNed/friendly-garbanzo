@@ -1,9 +1,10 @@
-from sys import argv
 from Piece import Piece
 
 class Tile:
-    def __init__(self, piece=None):
+    def __init__(self, piece=Piece('Null')):
         """Creates a new Tile object."""
+        if not type(piece) == Piece:
+            raise ValueError(f'Expected Piece.Pice tbut got {type(piece)}')
         self.piece = piece
 
     def __repr__(self):
@@ -13,7 +14,7 @@ class Tile:
 
     def place(self, piece):
         """Places a piece onto the tile."""
-        if self.piece:
+        if self.piece.color != 'null':
             raise ValueError("Can not place on an occupied tile.")
         else:
             self.piece = piece
@@ -49,11 +50,17 @@ def test():
     bt.change_color()
     print('color changed')
     print(bt)
+    print('empty tile')
+    print(et)
+    print('placing white piece on empty tile')
+    et.place(wp)
+    print('white piece placed')
+    print(et)
+    print('placing black piece on et (expecting error)')
+    try:
+        bt.place(bp)
+    except ValueError as e:
+        print('Exception caught:', e)
     print('Test end')
 
 
-try:
-    if argv[1] == 'test':
-        test()
-except IndexError:
-    pass
