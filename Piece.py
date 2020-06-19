@@ -9,7 +9,7 @@ class Piece:
             'null': '0'
             }
 
-    def __init__(self, color : str):
+    def __init__(self, color='null'):
         """Returns a new Piece object.
         args:
         color -- String representing color of the piece"""
@@ -17,7 +17,10 @@ class Piece:
 
     def __repr__(self):
         return Piece.colors.get(self.color)
+    
 
+    def __eq__(self, other):
+        return self.color == other.color
 
 def test():
     wp = Piece('White')
@@ -29,8 +32,4 @@ def test():
     print(bp)
     print('Null piece')
     print(np)
-try:
-    if argv[1] == 'test':
-        test()
-except IndexError:
-    pass
+

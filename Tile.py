@@ -4,7 +4,7 @@ class Tile:
     def __init__(self, piece=Piece('Null')):
         """Creates a new Tile object."""
         if not type(piece) == Piece:
-            raise ValueError(f'Expected Piece.Pice tbut got {type(piece)}')
+            raise ValueError(f'Expected Piece.Piece got {type(piece)}')
         self.piece = piece
 
     def __repr__(self):
