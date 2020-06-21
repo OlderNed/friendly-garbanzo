@@ -39,11 +39,10 @@ class Board:
             else:
                 pieces.append(((i, y)))
         
-        pieces.pop(-1)
-        for piece in pieces:
-            x,y = piece
-            self.board[x][y].flip()
-            # piece = [C, (x, y)], where C is the color of the piece.
+        if not str(pieces.pop(-1)) == '0':
+            for piece in pieces:
+                x,y = piece
+                self.board[x][y].flip()
         
         if self.transposed:
             self.transpose()
