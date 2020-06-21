@@ -18,6 +18,8 @@ class Piece:
     def __repr__(self):
         return Piece.colors.get(self.color)
     
+    def __str__(self):
+        return repr(self)
 
     def __eq__(self, other):
         return self.color == other.color
