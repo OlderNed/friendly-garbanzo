@@ -38,7 +38,6 @@ class Board:
         
 
         pieces = list()
-        # crashes on call board.flip_rows(2, 4, 'p', 'y')
         for i in range(x + 1, end, direction_coefficient):
             c_piece = self.board[i][y]
             if str(c_piece) == '0':
