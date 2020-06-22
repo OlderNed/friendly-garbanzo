@@ -21,7 +21,7 @@ class Board:
 
     def flip_rows(self, x, y, direction='p', axis='x'):
         """Checks if any pieces can be flipped, and flips them"""
-        
+        print('flip_row running')
         piece = self.board[x][y]
         direction_coefficient = 0
         # apply direction for the loop
@@ -34,14 +34,23 @@ class Board:
         # chose axis 
         if axis == 'y':
             self.transpose()
-            self.print_board()
+            x, y = y, x
+            # print('transposed board')
+            # self.print_board()
         
-
+        # print('pieces defined')
         pieces = list()
+        # print('loop should start here')
+        # print(f'x + x = {x + 1}\nend = {end}\ndirection_coefficient = {direction_coefficient}')
+        # print(list(range(x+1, end, direction_coefficient)))
+        # print(f'(x, y) : ({x}, {y})')
+
         for i in range(x + 1, end, direction_coefficient):
+            print(i, y)
             c_piece = self.board[i][y]
+            # print(c_piece)
             if str(c_piece) == '0':
-                break
+                continue
             else:
                 pieces.append(((i, y)))
         last = pieces.pop(-1)
@@ -69,9 +78,9 @@ def test():
     board.place(white_pieces.pop(), 2,3)
     board.place(black_pieces.pop(), 2,4)
     board.print_board()
-    print('running check')
+    print('running flip_row')
     tiles = board.flip_rows(2, 0, 'p', 'y')
-    print('check done running')
+    print('flip_row done running')
     print(board)
 
 
